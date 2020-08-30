@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MyNotes</string>
+
+    <!--Home Fragment-->
+    <string name="home_frag_new_note">New note</string>
+
 </resources>
