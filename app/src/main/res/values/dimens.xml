@@ -15,4 +15,7 @@
     <dimen name="small_margin">8dp</dimen>
     <dimen name="tiny_margin">4dp</dimen>
 
+    <dimen name="face_size">72dp</dimen>
+    <dimen name="retry_button_width">128dp</dimen>
+
 </resources>
