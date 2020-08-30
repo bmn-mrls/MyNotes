@@ -1,4 +1,4 @@
-package com.bmnmrls.mynotes.home
+package com.bmnmrls.mynotes.home.views.activity
 
 import android.content.Context
 import android.content.Intent
@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bmnmrls.mynotes.R
 
 class HomeActivity : AppCompatActivity() {
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

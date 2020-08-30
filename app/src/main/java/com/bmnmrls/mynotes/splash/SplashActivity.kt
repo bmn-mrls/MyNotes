@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.widget.MotionLayout
 import com.bmnmrls.mynotes.databinding.ActivitySplashBinding
-import com.bmnmrls.mynotes.home.HomeActivity
+import com.bmnmrls.mynotes.home.views.activity.HomeActivity
 import timber.log.Timber
 
 class SplashActivity : AppCompatActivity() {
