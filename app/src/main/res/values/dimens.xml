@@ -17,5 +17,8 @@
 
     <dimen name="face_size">72dp</dimen>
     <dimen name="retry_button_width">128dp</dimen>
+    <dimen name="note_corner_radius">6dp</dimen>
+    <dimen name="note_card_elevation">2dp</dimen>
+    <dimen name="note_height">92dp</dimen>
 
 </resources>

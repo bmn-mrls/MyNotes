@@ -6,4 +6,5 @@
     <color name="colorPrimaryText">#000000</color>
     <color name="colorAccent">#FFFFA6</color>
     <color name="colorPaperTexture">#D5D6D9</color>
+    <color name="colorNoteBackground">#FFFFFF</color>
 </resources>
