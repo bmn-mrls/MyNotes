@@ -5,7 +5,7 @@
         android:id="@id/notesFragment"
         android:enabled="true"
         android:icon="@drawable/ic_notes_black"
-        android:title="@string/all_notes" />
+        android:title="@string/notes" />
 
     <item
         android:id="@id/createEditNoteFragment"

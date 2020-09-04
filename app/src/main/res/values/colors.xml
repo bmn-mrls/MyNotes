@@ -7,4 +7,5 @@
     <color name="colorAccent">#C5F1FF</color>
     <color name="colorPaperTexture">#D5D6D9</color>
     <color name="colorNoteBackground">#FFFFFF</color>
+    <color name="colorBottomNavigationItemRipple">#807E7E7E</color>
 </resources>

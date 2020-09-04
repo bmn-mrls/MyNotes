@@ -3,9 +3,9 @@ package com.bmnmrls.yottings.notes.views.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.bmnmrls.yottings.R
 import com.bmnmrls.yottings.databinding.ActivityNotesBinding
 import com.bmnmrls.yottings.utils.ktx.setTextFromResource
@@ -23,11 +23,12 @@ class NotesActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
-        binding.bottomNavigationView.setOnNavigationItemSelectedListener { item ->
-            binding.toolbar.findViewById<TextView>(R.id.toolbarTitleTextView)
-                .setTextFromResource(item.title)
-            findNavController(R.id.navHostFragment).navigate(item.itemId)
-            true
+        NavigationUI.setupWithNavController(
+            binding.bottomNavigationView,
+            findNavController(R.id.navHostFragment)
+        )
+        findNavController(R.id.navHostFragment).addOnDestinationChangedListener { _, destination, _ ->
+            binding.toolbarTitleTextView.setTextFromResource(destination.label.toString())
         }
     }
 

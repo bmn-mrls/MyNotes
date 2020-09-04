@@ -17,13 +17,13 @@
 
             <TextView
                 android:id="@+id/toolbarTitleTextView"
-                style="@style/BoldTextStyle"
+                style="@style/RegularTextStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="@string/all_notes"
+                android:text="@string/notes"
                 android:textColor="@color/colorPrimaryText"
-                android:textSize="@dimen/huge_text_size" />
+                android:textSize="@dimen/long_text_size" />
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -46,7 +46,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:itemIconTint="@color/colorPrimaryText"
-            app:itemRippleColor="@color/colorPrimaryText"
+            app:itemRippleColor="@color/colorBottomNavigationItemRipple"
             app:itemTextAppearanceActive="@style/ActiveBottomNavigationViewTextStyle"
             app:itemTextAppearanceInactive="@style/InactiveBottomNavigationViewTextStyle"
             app:itemTextColor="@color/colorPrimaryText"
