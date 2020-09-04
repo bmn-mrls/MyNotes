@@ -2,9 +2,9 @@
 <resources>
     <color name="colorPrimary">#ACC4CC</color>
     <color name="colorPrimaryDark">#7C949B</color>
-    <color name="colorPrimaryLight">#DEF7FF</color>
+    <color name="colorPrimaryLight">#C5F1FF</color>
     <color name="colorPrimaryText">#000000</color>
-    <color name="colorAccent">#DEF7FF</color>
+    <color name="colorAccent">#C5F1FF</color>
     <color name="colorPaperTexture">#D5D6D9</color>
     <color name="colorNoteBackground">#FFFFFF</color>
 </resources>
