@@ -6,6 +6,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="@dimen/note_height"
+        android:layout_marginStart="@dimen/small_margin"
+        android:layout_marginEnd="@dimen/small_margin"
         android:clickable="true"
         android:focusable="true"
         android:foreground="?android:attr/selectableItemBackground"
@@ -55,7 +57,7 @@
                 android:layout_marginTop="@dimen/small_margin"
                 android:ellipsize="end"
                 android:maxLines="1"
-                android:textSize="@dimen/small_text_size"
+                android:textSize="@dimen/tiny_text_size"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/endGuideline"
                 app:layout_constraintStart_toStartOf="@id/startGuideline"

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@id/notesFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_notes_black"
+        android:title="@string/all_notes" />
+
+    <item
+        android:id="@id/createEditNoteFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_favorite_black"
+        android:title="@string/favorites" />
+
+    <item
+        android:id="@id/settingsFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_settings_black"
+        android:title="@string/settings" />
+
+</menu>

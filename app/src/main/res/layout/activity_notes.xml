@@ -8,18 +8,52 @@
         android:layout_height="match_parent"
         tools:context=".notes.views.activity.NotesActivity">
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ToolbarStyle"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/toolbarTitleTextView"
+                style="@style/BoldTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/all_notes"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/huge_text_size" />
+
+        </androidx.appcompat.widget.Toolbar>
+
         <fragment
             android:id="@+id/navHostFragment"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:defaultNavHost="true"
+            app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:navGraph="@navigation/notes_navigation_graph"
+            tools:ignore="FragmentTagUsage" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:itemIconTint="@color/colorPrimaryText"
+            app:itemRippleColor="@color/colorPrimaryText"
+            app:itemTextAppearanceActive="@style/ActiveBottomNavigationViewTextStyle"
+            app:itemTextAppearanceInactive="@style/InactiveBottomNavigationViewTextStyle"
+            app:itemTextColor="@color/colorPrimaryText"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:navGraph="@navigation/notes_navigation_graph"
-            tools:ignore="FragmentTagUsage" />
+            app:menu="@menu/notes_menu" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

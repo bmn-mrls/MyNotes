@@ -11,6 +11,18 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
+    <style name="ToolbarStyle" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="ActiveBottomNavigationViewTextStyle">
+        <item name="android:fontFamily">@font/avenir_next_bold</item>
+    </style>
+
+    <style name="InactiveBottomNavigationViewTextStyle">
+        <item name="android:fontFamily">@font/avenir_next_regular</item>
+    </style>
+
     <style name="BoldTextStyle" parent="Widget.MaterialComponents.TextView">
         <item name="android:fontFamily">@font/avenir_next_bold</item>
         <item name="android:textColor">@color/colorPrimaryText</item>
