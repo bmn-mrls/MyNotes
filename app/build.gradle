@@ -11,7 +11,7 @@ android {
     buildToolsVersion versions.buildTools
 
     defaultConfig {
-        applicationId "com.bmnmrls.mynotes"
+        applicationId "com.bmnmrls.yottings"
         minSdkVersion versions.minSdk
         targetSdkVersion versions.compileSdk
         versionCode versions.versionCode

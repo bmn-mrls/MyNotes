@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.bmnmrls.mynotes">
+    package="com.bmnmrls.yottings">
 
     <application
-        android:name=".app.MyNotesApplication"
+        android:name="com.bmnmrls.yottings.app.YottingsApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_my_notes"
+        android:icon="@mipmap/ic_yottings"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_my_notes_round"
+        android:roundIcon="@mipmap/ic_yottings_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
         <activity
-            android:name=".splash.SplashActivity"
+            android:name="com.bmnmrls.yottings.splash.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".home.views.activity.HomeActivity" />
+        <activity android:name="com.bmnmrls.yottings.notes.views.activity.NotesActivity" />
     </application>
 
 </manifest>

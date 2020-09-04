@@ -14,7 +14,7 @@
             <KeyAttribute
                 android:rotationY="360"
                 motion:framePosition="0"
-                motion:motionTarget="@+id/myNotesImageView" />
+                motion:motionTarget="@+id/yottingsImageView" />
 
         </KeyFrameSet>
 
