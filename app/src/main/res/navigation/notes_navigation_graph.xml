@@ -12,9 +12,15 @@
         tools:layout="@layout/fragment_notes" />
 
     <fragment
-        android:id="@+id/noteFragment"
+        android:id="@+id/createEditNoteFragment"
         android:name="com.bmnmrls.yottings.notes.views.fragments.CreateEditNoteFragment"
         android:label="fragment_note"
         tools:layout="@layout/fragment_create_edit_note" />
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.bmnmrls.yottings.notes.views.fragments.SettingsFragment"
+        android:label="SettingsFragment"
+        tools:layout="@layout/fragment_settings" />
 
 </navigation>
