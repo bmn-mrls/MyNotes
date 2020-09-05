@@ -1,9 +1,8 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'dagger.hilt.android.plugin'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'androidx.navigation.safeargs.kotlin'
 apply from: '../dependencies.gradle'
 
 android {
@@ -11,13 +10,13 @@ android {
     buildToolsVersion versions.buildTools
 
     defaultConfig {
-        applicationId "com.bmnmrls.yottings"
         minSdkVersion versions.minSdk
         targetSdkVersion versions.compileSdk
         versionCode versions.versionCode
         versionName versions.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
     buildTypes {
         debug {
@@ -36,9 +35,6 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
-    buildFeatures {
-        dataBinding = true
-    }
     androidExtensions {
         experimental = true
     }
@@ -46,7 +42,6 @@ android {
 
 dependencies {
 
-    implementation project(':data')
     implementation project(':domain')
 
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -59,21 +54,11 @@ dependencies {
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutinesVersion"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.coroutinesVersion"
 
-    //Android Supports
-    implementation "com.google.android.material:material:$versions.materialVersion"
-    implementation "androidx.constraintlayout:constraintlayout:$versions.constraintVersion"
-    implementation "androidx.legacy:legacy-support-v4:$versions.legacyVersion"
-    implementation "androidx.core:core-ktx:$versions.coreVersion"
-    implementation "androidx.appcompat:appcompat:$versions.appCompatVersion"
-
     //Architecture Components
-    implementation "androidx.fragment:fragment-ktx:$versions.fragmentVersion"
     implementation "androidx.lifecycle:lifecycle-extensions:$versions.lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$versions.lifecycleVersion"
-    implementation "androidx.navigation:navigation-fragment-ktx:$versions.navigationVersion"
-    implementation "androidx.navigation:navigation-ui-ktx:$versions.navigationVersion"
     implementation "androidx.room:room-runtime:$versions.roomVersion"
     implementation "androidx.room:room-ktx:$versions.roomVersion"
     kapt "androidx.room:room-compiler:$versions.roomVersion"
@@ -96,9 +81,7 @@ dependencies {
     testImplementation "junit:junit:$versions.junitVersion"
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$versions.mockitoKotlinVersion"
     testImplementation "org.mockito:mockito-inline:$versions.mockitoInlineVersion"
-    testImplementation "org.robolectric:robolectric:$versions.robolectricVersion"
     androidTestImplementation "androidx.test:core:$versions.androidxTest"
     androidTestImplementation "androidx.test.ext:junit:$versions.androidxTestJunit"
     androidTestImplementation "com.android.support.test:runner:$versions.androidTestRunner"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$versions.espressoVersion"
 }
