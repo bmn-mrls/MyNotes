@@ -3,10 +3,12 @@
     <string name="app_name">Yottings</string>
 
     <string name="notes">Notes</string>
+    <string name="note">Note</string>
     <string name="favorites">Favorites</string>
     <string name="settings">Settings</string>
 
     <string name="retry">Retry</string>
+    <string name="done">Done</string>
 
     <!--Notes Fragment-->
     <string name="notes_frag_new_note">New note</string>
@@ -15,6 +17,9 @@
     <string name="error_layout_generic_error">Oh oh!, something strange\nhappened…</string>
 
     <!--Empty Layout-->
-    <string name="empty_layout_title">You haven´t added notes yet,\nlet´s add your first one</string>
+    <string name="empty_layout_title">You haven´t added notes yet,\nlet´s add your first one.</string>
+
+    <!--Create Edit Fragment-->
+    <string name="create_edit_frag_note_hint">Create your amazing note</string>
 
 </resources>

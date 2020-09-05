@@ -9,13 +9,31 @@
         android:id="@+id/notesFragment"
         android:name="com.bmnmrls.yottings.notes.views.fragments.NotesFragment"
         android:label="@string/notes"
-        tools:layout="@layout/fragment_notes" />
+        tools:layout="@layout/fragment_notes">
+
+        <action
+            android:id="@+id/action_notesFragment_to_createEditNoteFragment"
+            app:destination="@id/createEditNoteFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/favoriteNotesFragment"
+        android:name="com.bmnmrls.yottings.notes.views.fragments.FavoriteNotesFragment"
+        android:label="@string/favorites"
+        tools:layout="@layout/fragment_favorite_notes" />
 
     <fragment
         android:id="@+id/createEditNoteFragment"
         android:name="com.bmnmrls.yottings.notes.views.fragments.CreateEditNoteFragment"
-        android:label="@string/favorites"
-        tools:layout="@layout/fragment_create_edit_note" />
+        android:label="@string/note"
+        tools:layout="@layout/fragment_create_edit_note">
+
+        <argument
+            android:name="mode"
+            app:argType="com.bmnmrls.yottings.notes.views.fragments.CreateEditNoteFragment$Mode" />
+
+    </fragment>
 
     <fragment
         android:id="@+id/settingsFragment"

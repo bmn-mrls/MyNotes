@@ -8,7 +8,7 @@
         android:title="@string/notes" />
 
     <item
-        android:id="@id/createEditNoteFragment"
+        android:id="@id/favoriteNotesFragment"
         android:enabled="true"
         android:icon="@drawable/ic_favorite"
         android:title="@string/favorites" />

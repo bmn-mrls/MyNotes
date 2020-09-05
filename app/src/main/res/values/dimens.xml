@@ -21,10 +21,8 @@
     <dimen name="note_card_elevation">2dp</dimen>
     <dimen name="note_height">92dp</dimen>
     <dimen name="note_favorite_icon_size">24dp</dimen>
-
-    <!--Notes Fragment-->
-    <dimen name="notes_frag_notes_vertical_space">2dp</dimen>
-    <dimen name="notes_frag_notes_margin_top">14dp</dimen>
-    <dimen name="notes_frag_notes_margin_bottom">42dp</dimen>
+    <dimen name="notes_vertical_space">2dp</dimen>
+    <dimen name="notes_margin_top">14dp</dimen>
+    <dimen name="notes_margin_bottom">42dp</dimen>
 
 </resources>

@@ -4,23 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/containerConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".notes.views.fragments.CreateEditNoteFragment">
+        tools:context=".notes.views.fragments.FavoriteNotesFragment">
 
-        <EditText
-            android:id="@+id/noteEditText"
-            style="@style/RegularTextStyle"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@null"
-            android:gravity="start|top"
-            android:hint="@string/create_edit_frag_note_hint"
-            android:importantForAutofill="no"
-            android:inputType="textMultiLine|textCapSentences"
-            android:padding="@dimen/default_margin"
-            android:scrollbars="vertical"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Favorite Notes Fragment"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

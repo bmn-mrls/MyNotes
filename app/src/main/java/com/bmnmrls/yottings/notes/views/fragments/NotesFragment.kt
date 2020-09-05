@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.bmnmrls.yottings.R
 import com.bmnmrls.yottings.databinding.FragmentNotesBinding
 import com.bmnmrls.yottings.notes.adapters.NotesAdapter
@@ -33,6 +34,7 @@ class NotesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupUI()
         notesAdapter.apply {
             addNotes(
                 listOf(
@@ -54,12 +56,21 @@ class NotesFragment : Fragment() {
             setHasFixedSize(true)
             addItemDecoration(
                 VerticalSpaceItemDecoration(
-                    space = R.dimen.notes_frag_notes_vertical_space,
-                    firstItemAdditionalSpace = R.dimen.notes_frag_notes_margin_top,
-                    lastItemAdditionalSpace = R.dimen.notes_frag_notes_margin_bottom
+                    space = R.dimen.notes_vertical_space,
+                    firstItemAdditionalSpace = R.dimen.notes_margin_top,
+                    lastItemAdditionalSpace = R.dimen.notes_margin_bottom
                 )
             )
             adapter = notesAdapter
+        }
+    }
+
+    private fun setupUI() {
+        binding.addNoteButton.setOnClickListener {
+            val action = NotesFragmentDirections.actionNotesFragmentToCreateEditNoteFragment(
+                CreateEditNoteFragment.Mode.CREATE
+            )
+            findNavController().navigate(action)
         }
     }
 
