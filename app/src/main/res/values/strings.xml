@@ -20,6 +20,6 @@
     <string name="empty_layout_title">You haven´t added notes yet,\nlet´s add your first one.</string>
 
     <!--Create Edit Fragment-->
-    <string name="create_edit_frag_note_hint">Create your amazing note</string>
+    <string name="create_edit_frag_note_hint">Create your amazing note here</string>
 
 </resources>

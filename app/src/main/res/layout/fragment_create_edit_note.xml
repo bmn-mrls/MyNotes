@@ -21,6 +21,8 @@
             android:inputType="textMultiLine|textCapSentences"
             android:padding="@dimen/default_margin"
             android:scrollbars="vertical"
+            android:textColorHint="@color/colorHint"
+            android:textSize="@dimen/long_text_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
