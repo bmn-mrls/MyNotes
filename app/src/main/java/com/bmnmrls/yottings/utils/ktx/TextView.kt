@@ -2,7 +2,7 @@ package com.bmnmrls.yottings.utils.ktx
 
 import android.widget.TextView
 
-fun TextView.setTextFromResource(resource: Any) {
+fun TextView.setTextFromStringOrResource(resource: Any) {
     when (resource) {
         is String -> text = resource
         is Int -> context.getString(resource)
