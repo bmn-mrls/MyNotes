@@ -8,7 +8,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.bmnmrls.yottings.R
 import com.bmnmrls.yottings.databinding.ActivityNotesBinding
-import com.bmnmrls.yottings.utils.ktx.setTextFromResource
+import com.bmnmrls.yottings.utils.ktx.setTextFromStringOrResource
 
 class NotesActivity : AppCompatActivity() {
 
@@ -28,7 +28,7 @@ class NotesActivity : AppCompatActivity() {
             findNavController(R.id.navHostFragment)
         )
         findNavController(R.id.navHostFragment).addOnDestinationChangedListener { _, destination, _ ->
-            binding.toolbarTitleTextView.setTextFromResource(destination.label.toString())
+            binding.toolbarTitleTextView.setTextFromStringOrResource(destination.label.toString())
         }
     }
 

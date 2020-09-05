@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bmnmrls.yottings.R
 import com.bmnmrls.yottings.databinding.NoteItemLayoutBinding
 import com.bmnmrls.yottings.notes.models.NoteUI
+import com.bmnmrls.yottings.utils.ktx.setTextFromStringOrResource
 
 class NotesAdapter : RecyclerView.Adapter<NotesAdapter.ViewHolder>() {
 
@@ -33,8 +34,9 @@ class NotesAdapter : RecyclerView.Adapter<NotesAdapter.ViewHolder>() {
         private val binding: NoteItemLayoutBinding = NoteItemLayoutBinding.bind(view)
 
         fun bind(item: NoteUI, listener: ((Long) -> Unit)) = with(binding) {
-            contentTextView.text = item.content
-            dateTextView.text = item.date
+            contentTextView.setTextFromStringOrResource(item.content)
+            dateTextView.setTextFromStringOrResource(item.date)
+            favoriteImageView.visibility = if (item.isFavorite) View.VISIBLE else View.GONE
             root.setOnClickListener { listener(item.id) }
         }
 
