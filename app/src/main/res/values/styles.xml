@@ -4,7 +4,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:windowBackground">@drawable/background</item>
+        <item name="android:windowBackground">@color/colorPrimary</item>
     </style>
 
     <style name="SplashTheme" parent="AppTheme">
@@ -16,7 +16,7 @@
     </style>
 
     <style name="ActiveBottomNavigationViewTextStyle">
-        <item name="android:fontFamily">@font/avenir_next_regular</item>
+        <item name="android:fontFamily">@font/avenir_next_bold</item>
     </style>
 
     <style name="InactiveBottomNavigationViewTextStyle">
@@ -42,19 +42,19 @@
     </style>
 
     <style name="ExtendedFloatingActionButton" parent="Widget.MaterialComponents.ExtendedFloatingActionButton">
-        <item name="android:fontFamily">@font/avenir_next_regular</item>
+        <item name="android:fontFamily">@font/avenir_next_bold</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="OutlinedButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="android:fontFamily">@font/avenir_next_regular</item>
+        <item name="android:fontFamily">@font/avenir_next_bold</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/colorPrimaryText</item>
         <item name="strokeColor">@color/colorPrimaryText</item>
     </style>
 
-    <style name="RegularTextButton" parent="Widget.MaterialComponents.Button.TextButton">
-        <item name="android:fontFamily">@font/avenir_next_regular</item>
+    <style name="BoldTextButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:fontFamily">@font/avenir_next_bold</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/colorPrimaryText</item>

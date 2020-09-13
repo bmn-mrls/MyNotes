@@ -11,7 +11,7 @@
         android:clickable="true"
         android:focusable="true"
         android:foreground="?android:attr/selectableItemBackground"
-        app:cardBackgroundColor="@color/colorNoteBackground"
+        app:cardBackgroundColor="@color/colorPrimary"
         app:cardCornerRadius="@dimen/note_corner_radius"
         app:cardElevation="@dimen/note_card_elevation"
         app:cardUseCompatPadding="true">
@@ -36,7 +36,7 @@
 
             <TextView
                 android:id="@+id/contentTextView"
-                style="@style/RegularTextStyle"
+                style="@style/BoldTextStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/small_margin"
@@ -56,7 +56,7 @@
                 android:layout_height="@dimen/note_favorite_icon_size"
                 android:alpha="0.5"
                 android:importantForAccessibility="no"
-                android:src="@drawable/ic_favorite"
+                android:src="@drawable/ic_favorite_inactive"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/endGuideline"

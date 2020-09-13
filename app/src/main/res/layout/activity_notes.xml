@@ -21,7 +21,7 @@
 
                 <TextView
                     android:id="@+id/toolbarTitleTextView"
-                    style="@style/RegularTextStyle"
+                    style="@style/BoldTextStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/notes"
@@ -34,7 +34,7 @@
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/doneButton"
-                    style="@style/RegularTextButton"
+                    style="@style/BoldTextButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/done"
@@ -43,7 +43,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:rippleColor="@color/colorBottomNavigationItemRipple" />
+                    app:rippleColor="@color/colorRipple" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -67,8 +67,9 @@
             style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
             app:itemIconTint="@color/colorPrimaryText"
-            app:itemRippleColor="@color/colorBottomNavigationItemRipple"
+            app:itemRippleColor="@color/colorRipple"
             app:itemTextAppearanceActive="@style/ActiveBottomNavigationViewTextStyle"
             app:itemTextAppearanceInactive="@style/InactiveBottomNavigationViewTextStyle"
             app:itemTextColor="@color/colorPrimaryText"

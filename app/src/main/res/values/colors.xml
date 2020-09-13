@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#F1BB3C</color>
-    <color name="colorPrimaryDark">#B98800</color>
-    <color name="colorPrimaryLight">#FFEA68</color>
-    <color name="colorPrimaryText">#000000</color>
-    <color name="colorHint">#7E7E7E</color>
-    <color name="colorAccent">#FFEA68</color>
-    <color name="colorPaperTexture">#D5D6D9</color>
-    <color name="colorNoteBackground">#FFFFFF</color>
-    <color name="colorBottomNavigationItemRipple">#7E7E7E</color>
+    <color name="colorPrimary">#090909</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorPrimaryLight">#131313</color>
+    <color name="colorPrimaryText">#EBEBEB</color>
+    <color name="colorHint">#959595</color>
+    <color name="colorAccent">#EBEBEB</color>
+    <color name="colorRipple">#7E7E7E</color>
+    <color name="black">#000000</color>
+    <color name="gray">#454545</color>
+    <color name="red">#A90000</color>
+    <color name="brown">#A94D00</color>
+    <color name="orange">#A97B00</color>
+    <color name="yellow">#A1A900</color>
+    <color name="green">#71A900</color>
+    <color name="cyan">#239A95</color>
+    <color name="blue_light">#0086A9</color>
+    <color name="blue_dark">#002AA9</color>
+    <color name="purple">#4700A9</color>
+    <color name="violet">#8200A9</color>
+    <color name="pink">#A90077</color>
 </resources>
