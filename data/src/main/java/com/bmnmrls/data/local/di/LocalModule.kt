@@ -2,14 +2,12 @@ package com.bmnmrls.data.local.di
 
 import android.content.Context
 import androidx.room.Room
-import com.bmnmrls.data.local.YottingsDatabase
 import com.bmnmrls.data.local.daos.NotesDao
+import com.bmnmrls.data.local.database.YottingsDatabase
 import com.bmnmrls.data.local.mappers.NoteEntityMapper
 import com.bmnmrls.data.local.models.NoteEntity
-import com.bmnmrls.data.local.repositories.NotesLocalRepository
 import com.bmnmrls.domain.mappers.Transform
 import com.bmnmrls.domain.models.Note
-import com.bmnmrls.domain.repositories.NotesRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -39,12 +37,5 @@ object LocalModule {
     @Singleton
     @Provides
     fun provideNoteEntityMapper(): Transform<NoteEntity, Note> = NoteEntityMapper()
-
-    @Singleton
-    @Provides
-    fun provideNotesLocalRepository(
-        noteEntityMapper: Transform<NoteEntity, Note>,
-        notesDao: NotesDao,
-    ): NotesRepository = NotesLocalRepository(noteEntityMapper, notesDao)
 
 }

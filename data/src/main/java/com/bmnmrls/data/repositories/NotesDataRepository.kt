@@ -1,4 +1,4 @@
-package com.bmnmrls.data.local.repositories
+package com.bmnmrls.data.repositories
 
 import com.bmnmrls.data.local.daos.NotesDao
 import com.bmnmrls.data.local.models.NoteEntity
@@ -9,14 +9,13 @@ import com.bmnmrls.domain.models.Note
 import com.bmnmrls.domain.repositories.NotesRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import javax.inject.Inject
 
-class NotesLocalRepository @Inject constructor(
+class NotesDataRepository(
     private val noteEntityMapper: Transform<NoteEntity, Note>,
     private val notesDao: NotesDao
 ) : NotesRepository {
 
-    override suspend fun createNote(note: Note): Flow<DataState<Long>> = flow {
+    override fun createNote(note: Note): Flow<DataState<Long>> = flow {
         emit(DataState.Loading)
         try {
             val noteEntity = noteEntityMapper.reverseTransform(note)
@@ -27,7 +26,7 @@ class NotesLocalRepository @Inject constructor(
         }
     }
 
-    override suspend fun updateNote(note: Note): Flow<DataState<Any>> = flow {
+    override fun updateNote(note: Note): Flow<DataState<Any>> = flow {
         emit(DataState.Loading)
         try {
             val noteEntity = noteEntityMapper.reverseTransform(note)
@@ -38,7 +37,7 @@ class NotesLocalRepository @Inject constructor(
         }
     }
 
-    override suspend fun deleteNote(note: Note): Flow<DataState<Any>> = flow {
+    override fun deleteNote(note: Note): Flow<DataState<Any>> = flow {
         emit(DataState.Loading)
         try {
             val noteEntity = noteEntityMapper.reverseTransform(note)
@@ -49,7 +48,7 @@ class NotesLocalRepository @Inject constructor(
         }
     }
 
-    override suspend fun getNote(id: Long): Flow<DataState<Note>> = flow {
+    override fun getNote(id: Long): Flow<DataState<Note>> = flow {
         emit(DataState.Loading)
         try {
             val note = noteEntityMapper.transform(notesDao.getNote(id))
@@ -59,7 +58,7 @@ class NotesLocalRepository @Inject constructor(
         }
     }
 
-    override suspend fun getNotes(): Flow<DataState<List<Note>>> = flow {
+    override fun getNotes(): Flow<DataState<List<Note>>> = flow {
         emit(DataState.Loading)
         try {
             val notes = noteEntityMapper.transformCollection(notesDao.getNotes())

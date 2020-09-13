@@ -1,4 +1,4 @@
-package com.bmnmrls.data.local
+package com.bmnmrls.data.local.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
