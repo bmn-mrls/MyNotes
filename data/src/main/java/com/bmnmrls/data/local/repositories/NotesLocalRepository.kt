@@ -9,10 +9,11 @@ import com.bmnmrls.domain.models.Note
 import com.bmnmrls.domain.repositories.NotesRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class NotesLocalRepository(
-    private val notesDao: NotesDao,
-    private val noteEntityMapper: Transform<NoteEntity, Note>
+class NotesLocalRepository @Inject constructor(
+    private val noteEntityMapper: Transform<NoteEntity, Note>,
+    private val notesDao: NotesDao
 ) : NotesRepository {
 
     override suspend fun createNote(note: Note): Flow<DataState<Long>> = flow {
