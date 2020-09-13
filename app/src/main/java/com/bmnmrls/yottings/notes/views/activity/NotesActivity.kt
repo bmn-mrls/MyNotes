@@ -12,7 +12,9 @@ import com.bmnmrls.yottings.R
 import com.bmnmrls.yottings.databinding.ActivityNotesBinding
 import com.bmnmrls.yottings.utils.ktx.hideKeyboard
 import com.bmnmrls.yottings.utils.ktx.setTextFromStringOrResource
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NotesActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityNotesBinding

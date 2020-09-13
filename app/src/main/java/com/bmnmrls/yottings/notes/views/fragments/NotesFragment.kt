@@ -9,13 +9,16 @@ import androidx.navigation.fragment.findNavController
 import com.bmnmrls.yottings.R
 import com.bmnmrls.yottings.databinding.FragmentNotesBinding
 import com.bmnmrls.yottings.notes.adapters.NotesAdapter
-import com.bmnmrls.yottings.notes.models.NoteUI
 import com.bmnmrls.yottings.utils.VerticalSpaceItemDecoration
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class NotesFragment : Fragment() {
 
+    @Inject
+    lateinit var notesAdapter: NotesAdapter
     private lateinit var binding: FragmentNotesBinding
-    private val notesAdapter: NotesAdapter by lazy { NotesAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,23 +38,15 @@ class NotesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupUI()
-        notesAdapter.apply {
-            addNotes(
-                listOf(
-                    NoteUI(0, "Test1", "30/08/20", false),
-                    NoteUI(1, "Test2", "30/08/20", false),
-                    NoteUI(2, "Test3", "30/08/20", true),
-                    NoteUI(3, "Test4", "30/08/20", true),
-                    NoteUI(3, "Test4", "30/08/20", false),
-                    NoteUI(3, "Test4", "30/08/20", false),
-                    NoteUI(3, "Test4", "30/08/20", true),
-                    NoteUI(3, "Test4", "30/08/20", false),
-                    NoteUI(4, "Test5", "30/08/20", false),
-                    NoteUI(5, "Test6", "30/08/20", false)
-                )
-            )
-            listener = {}
-        }
+    }
+
+    private fun setupUI() {
+        setupNotes()
+        setupAddNewNote()
+    }
+
+    private fun setupNotes() {
+        notesAdapter.listener = {}
         binding.notesRecyclerView.apply {
             setHasFixedSize(true)
             addItemDecoration(
@@ -65,7 +60,7 @@ class NotesFragment : Fragment() {
         }
     }
 
-    private fun setupUI() {
+    private fun setupAddNewNote() {
         binding.addNoteButton.setOnClickListener {
             val action = NotesFragmentDirections.actionNotesFragmentToCreateEditNoteFragment(
                 CreateEditNoteFragment.Mode.CREATE
