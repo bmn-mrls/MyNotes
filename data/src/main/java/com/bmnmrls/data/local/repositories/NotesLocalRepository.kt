@@ -51,9 +51,7 @@ class NotesLocalRepository(
     override suspend fun getNote(id: Long): Flow<DataState<Note>> = flow {
         emit(DataState.Loading)
         try {
-            val note = noteEntityMapper.transform(
-                notesDao.getNote(id)
-            )
+            val note = noteEntityMapper.transform(notesDao.getNote(id))
             emit(DataState.Success(note))
         } catch (e: Exception) {
             emit(DataState.Error(Failure.GenericError(e)))
@@ -63,9 +61,7 @@ class NotesLocalRepository(
     override suspend fun getNotes(): Flow<DataState<List<Note>>> = flow {
         emit(DataState.Loading)
         try {
-            val notes = noteEntityMapper.transformCollection(
-                notesDao.getNotes()
-            )
+            val notes = noteEntityMapper.transformCollection(notesDao.getNotes())
             emit(if (notes.isEmpty()) DataState.Empty else DataState.Success(notes))
         } catch (e: Exception) {
             emit(DataState.Error(Failure.GenericError(e)))
