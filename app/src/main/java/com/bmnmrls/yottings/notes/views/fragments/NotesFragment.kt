@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bmnmrls.yottings.R
+import com.bmnmrls.yottings.createeditnote.views.fragments.CreateEditNoteFragment
 import com.bmnmrls.yottings.databinding.FragmentNotesBinding
 import com.bmnmrls.yottings.notes.adapters.NotesAdapter
 import com.bmnmrls.yottings.utils.VerticalSpaceItemDecoration

@@ -7,7 +7,7 @@
         android:id="@+id/containerConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".notes.views.fragments.CreateEditNoteFragment">
+        tools:context=".createeditnote.views.fragments.CreateEditNoteFragment">
 
         <EditText
             android:id="@+id/noteEditText"

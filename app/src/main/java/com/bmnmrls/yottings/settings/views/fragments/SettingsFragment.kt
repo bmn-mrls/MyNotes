@@ -1,4 +1,4 @@
-package com.bmnmrls.yottings.notes.views.fragments
+package com.bmnmrls.yottings.settings.views.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

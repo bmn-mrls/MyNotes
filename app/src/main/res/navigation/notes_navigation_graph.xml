@@ -19,25 +19,25 @@
 
     <fragment
         android:id="@+id/favoriteNotesFragment"
-        android:name="com.bmnmrls.yottings.notes.views.fragments.FavoriteNotesFragment"
+        android:name="com.bmnmrls.yottings.favoritenotes.views.fragments.FavoriteNotesFragment"
         android:label="@string/favorites"
         tools:layout="@layout/fragment_favorite_notes" />
 
     <fragment
         android:id="@+id/createEditNoteFragment"
-        android:name="com.bmnmrls.yottings.notes.views.fragments.CreateEditNoteFragment"
+        android:name="com.bmnmrls.yottings.createeditnote.views.fragments.CreateEditNoteFragment"
         android:label="@string/note"
         tools:layout="@layout/fragment_create_edit_note">
 
         <argument
             android:name="mode"
-            app:argType="com.bmnmrls.yottings.notes.views.fragments.CreateEditNoteFragment$Mode" />
+            app:argType="com.bmnmrls.yottings.createeditnote.views.fragments.CreateEditNoteFragment$Mode" />
 
     </fragment>
 
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.bmnmrls.yottings.notes.views.fragments.SettingsFragment"
+        android:name="com.bmnmrls.yottings.settings.views.fragments.SettingsFragment"
         android:label="@string/settings"
         tools:layout="@layout/fragment_settings" />
 
