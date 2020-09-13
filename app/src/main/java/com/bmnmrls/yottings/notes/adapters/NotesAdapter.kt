@@ -1,5 +1,7 @@
 package com.bmnmrls.yottings.notes.adapters
 
+import android.graphics.Color
+import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,12 +36,31 @@ class NotesAdapter : RecyclerView.Adapter<NotesAdapter.ViewHolder>() {
         private val binding: NoteItemLayoutBinding = NoteItemLayoutBinding.bind(view)
 
         fun bind(item: Note, listener: ((Long) -> Unit)) = with(binding) {
+            backgroundImageView.setImageDrawable(
+                getNoteBackground(
+                    item.firstColor,
+                    item.secondColor
+                )
+            )
             contentTextView.setTextFromStringOrResource(item.content)
             dateTextView.setTextFromStringOrResource(item.date)
             favoriteImageView.visibility = if (item.isFavorite) View.VISIBLE else View.GONE
             root.setOnClickListener { item.id?.let { itemId -> listener(itemId) } }
         }
 
+    }
+
+    companion object {
+        fun getNoteBackground(firstColor: String, secondColor: String): GradientDrawable =
+            GradientDrawable(
+                GradientDrawable.Orientation.BOTTOM_TOP,
+                intArrayOf(
+                    Color.parseColor(firstColor),
+                    Color.parseColor(secondColor)
+                )
+            ).apply {
+                cornerRadius = 0f
+            }
     }
 
 }

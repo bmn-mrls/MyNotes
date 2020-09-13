@@ -18,6 +18,12 @@ data class NoteEntity(
     val date: String,
 
     @ColumnInfo(name = "is_favorite")
-    val isFavorite: Boolean
+    val isFavorite: Boolean,
+
+    @ColumnInfo(name = "first_color")
+    val firstColor: String,
+
+    @ColumnInfo(name = "second_color")
+    val secondColor: String
 
 )

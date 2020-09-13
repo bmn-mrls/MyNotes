@@ -10,7 +10,9 @@ class NoteEntityMapper : Transform<NoteEntity, Note>() {
         value.id,
         value.content,
         value.date,
-        value.isFavorite
+        value.isFavorite,
+        value.firstColor,
+        value.secondColor
     )
 
 }
