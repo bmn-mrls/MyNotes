@@ -10,8 +10,9 @@ import com.bmnmrls.domain.models.Note
 import com.bmnmrls.yottings.R
 import com.bmnmrls.yottings.databinding.NoteItemLayoutBinding
 import com.bmnmrls.yottings.utils.ktx.setTextFromStringOrResource
+import javax.inject.Inject
 
-class NotesAdapter : RecyclerView.Adapter<NotesAdapter.ViewHolder>() {
+class NotesAdapter @Inject constructor() : RecyclerView.Adapter<NotesAdapter.ViewHolder>() {
 
     lateinit var listener: ((Long) -> Unit)
     private val notes: MutableList<Note> = mutableListOf()
