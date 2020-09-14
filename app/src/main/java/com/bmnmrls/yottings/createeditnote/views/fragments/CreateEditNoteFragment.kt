@@ -6,11 +6,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import com.bmnmrls.domain.DataState
+import com.bmnmrls.yottings.createeditnote.models.CreateEditNoteStateEvent
+import com.bmnmrls.yottings.createeditnote.viewmodels.CreateEditNoteViewModel
 import com.bmnmrls.yottings.databinding.FragmentCreateEditNoteBinding
+import com.bmnmrls.yottings.utils.ktx.hideView
+import com.bmnmrls.yottings.utils.ktx.showView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CreateEditNoteFragment : Fragment() {
 
+    private val viewModel: CreateEditNoteViewModel by viewModels()
+
+    private val args: CreateEditNoteFragmentArgs by navArgs()
     private lateinit var binding: FragmentCreateEditNoteBinding
 
     enum class Mode {
@@ -18,12 +30,22 @@ class CreateEditNoteFragment : Fragment() {
         EDIT
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        initObservers()
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentCreateEditNoteBinding.inflate(layoutInflater)
+        binding = FragmentCreateEditNoteBinding.inflate(layoutInflater).also {
+            it.lifecycleOwner = viewLifecycleOwner
+            it.viewModel = this.viewModel
+            it.executePendingBindings()
+        }
         return binding.root
     }
 
@@ -34,14 +56,47 @@ class CreateEditNoteFragment : Fragment() {
         setupOnBackPressed()
     }
 
+    private fun initObservers() {
+        viewModel.createNoteDataState.observe(this) { dataState ->
+            when (dataState) {
+                is DataState.Success<Long> -> {
+                    showNote()
+                    findNavController().popBackStack()
+                }
+                is DataState.Loading -> showProgress()
+                is DataState.Error -> showError()
+            }
+        }
+    }
+
     private fun setupUI() {
 
+    }
+
+    private fun showNote() {
+        binding.noteEditText.showView()
+        binding.loadingLayout.hideView()
+        binding.errorLayout.hideView()
+    }
+
+    private fun showProgress() {
+        binding.loadingLayout.showView()
+        binding.errorLayout.hideView()
+        binding.noteEditText.hideView()
+    }
+
+    private fun showError() {
+        binding.errorLayout.showView()
+        binding.loadingLayout.hideView()
+        binding.noteEditText.hideView()
     }
 
     private fun setupOnBackPressed() {
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                findNavController().popBackStack()
+                if (args.mode == Mode.CREATE) {
+                    viewModel.setStateEvent(CreateEditNoteStateEvent.CreateNote)
+                }
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)

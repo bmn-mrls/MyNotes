@@ -3,11 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.bmnmrls.yottings.createeditnote.viewmodels.CreateEditNoteViewModel" />
+
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/containerConstraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".createeditnote.views.fragments.CreateEditNoteFragment">
+
+        <include
+            android:id="@+id/loadingLayout"
+            layout="@layout/loading_layout"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/errorLayout"
+            layout="@layout/error_layout"
+            android:visibility="gone" />
 
         <EditText
             android:id="@+id/noteEditText"
@@ -21,6 +39,7 @@
             android:inputType="textMultiLine|textCapSentences"
             android:padding="@dimen/default_margin"
             android:scrollbars="vertical"
+            android:text="@={viewModel.content}"
             android:textColorHint="@color/colorHint"
             android:textSize="@dimen/long_text_size"
             app:layout_constraintBottom_toBottomOf="parent"
