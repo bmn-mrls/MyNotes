@@ -15,4 +15,13 @@ class NoteEntityMapper : Transform<NoteEntity, Note>() {
         value.secondColor
     )
 
+    override fun reverseTransform(value: Note) = NoteEntity(
+        value.id,
+        value.content,
+        value.date,
+        value.isFavorite,
+        value.firstColor,
+        value.secondColor
+    )
+
 }
