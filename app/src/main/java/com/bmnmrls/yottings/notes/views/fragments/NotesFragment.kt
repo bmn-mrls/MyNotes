@@ -97,6 +97,14 @@ class NotesFragment : Fragment() {
         }
     }
 
+    private fun showNotes() {
+        binding.notesRecyclerView.showView()
+        binding.addNoteButton.showView()
+        binding.emptyLayout.hideView()
+        binding.errorLayout.hideView()
+        binding.loadingLayout.hideView()
+    }
+
     private fun showProgress() {
         binding.loadingLayout.showView()
         binding.errorLayout.hideView()
@@ -119,14 +127,6 @@ class NotesFragment : Fragment() {
         binding.errorLayout.hideView()
         binding.loadingLayout.hideView()
         binding.notesRecyclerView.hideView()
-    }
-
-    private fun showNotes() {
-        binding.addNoteButton.hideView()
-        binding.notesRecyclerView.showView()
-        binding.emptyLayout.hideView()
-        binding.errorLayout.hideView()
-        binding.loadingLayout.hideView()
     }
 
 }
