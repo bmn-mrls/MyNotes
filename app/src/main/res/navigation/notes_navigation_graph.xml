@@ -33,6 +33,12 @@
             android:name="mode"
             app:argType="com.bmnmrls.yottings.createeditnote.views.fragments.CreateEditNoteFragment$Mode" />
 
+        <argument
+            android:name="note"
+            android:defaultValue="@null"
+            app:argType="com.bmnmrls.domain.models.Note"
+            app:nullable="true" />
+
     </fragment>
 
     <fragment
