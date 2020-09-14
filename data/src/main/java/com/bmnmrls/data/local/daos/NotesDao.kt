@@ -7,7 +7,7 @@ import com.bmnmrls.data.local.models.NoteEntity
 interface NotesDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertNote(noteEntity: NoteEntity): Long
+    suspend fun createNote(noteEntity: NoteEntity): Long
 
     @Update
     suspend fun updateNote(noteEntity: NoteEntity)
