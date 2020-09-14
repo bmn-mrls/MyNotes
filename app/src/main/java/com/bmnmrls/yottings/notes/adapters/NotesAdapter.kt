@@ -14,7 +14,7 @@ import javax.inject.Inject
 
 class NotesAdapter @Inject constructor() : RecyclerView.Adapter<NotesAdapter.ViewHolder>() {
 
-    lateinit var listener: ((Long) -> Unit)
+    lateinit var listener: ((Note) -> Unit)
     private val notes: MutableList<Note> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
@@ -36,7 +36,7 @@ class NotesAdapter @Inject constructor() : RecyclerView.Adapter<NotesAdapter.Vie
 
         private val binding: NoteItemLayoutBinding = NoteItemLayoutBinding.bind(view)
 
-        fun bind(item: Note, listener: ((Long) -> Unit)) = with(binding) {
+        fun bind(item: Note, listener: ((Note) -> Unit)) = with(binding) {
             backgroundImageView.setImageDrawable(
                 getNoteBackground(
                     item.firstColor,
@@ -46,7 +46,7 @@ class NotesAdapter @Inject constructor() : RecyclerView.Adapter<NotesAdapter.Vie
             contentTextView.setTextFromStringOrResource(item.content)
             dateTextView.setTextFromStringOrResource(item.date)
             favoriteImageView.visibility = if (item.isFavorite) View.VISIBLE else View.GONE
-            root.setOnClickListener { item.id?.let { itemId -> listener(itemId) } }
+            root.setOnClickListener { listener(item) }
         }
 
     }
