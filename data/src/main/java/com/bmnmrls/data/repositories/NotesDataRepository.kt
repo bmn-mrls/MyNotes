@@ -19,7 +19,7 @@ class NotesDataRepository(
         emit(DataState.Loading)
         try {
             val noteEntity = noteEntityMapper.reverseTransform(note)
-            val id = notesDao.insertNote(noteEntity)
+            val id = notesDao.createNote(noteEntity)
             emit(DataState.Success(id))
         } catch (e: Exception) {
             emit(DataState.Error(Failure.GenericError(e)))
