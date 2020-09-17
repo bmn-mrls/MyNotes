@@ -10,9 +10,11 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bmnmrls.domain.DataState
+import com.bmnmrls.yottings.R
 import com.bmnmrls.yottings.createeditnote.models.CreateEditNoteStateEvent
 import com.bmnmrls.yottings.createeditnote.viewmodels.CreateEditNoteViewModel
 import com.bmnmrls.yottings.databinding.FragmentCreateEditNoteBinding
+import com.bmnmrls.yottings.utils.ktx.hideKeyboard
 import com.bmnmrls.yottings.utils.ktx.hideView
 import com.bmnmrls.yottings.utils.ktx.showView
 import dagger.hilt.android.AndroidEntryPoint
@@ -70,7 +72,19 @@ class CreateEditNoteFragment : Fragment() {
     }
 
     private fun setupUI() {
-
+        binding.toolbar.setNavigationOnClickListener { activity?.onBackPressed() }
+        binding.toolbar.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.favorite -> {
+                    true
+                }
+                R.id.done -> {
+                    requireActivity().hideKeyboard()
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     private fun showNote() {
