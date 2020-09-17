@@ -64,7 +64,6 @@ class NotesFragment : Fragment() {
             addItemDecoration(
                 VerticalSpaceItemDecoration(
                     space = R.dimen.notes_vertical_space,
-                    firstItemAdditionalSpace = R.dimen.notes_margin_top,
                     lastItemAdditionalSpace = R.dimen.notes_margin_bottom
                 )
             )
