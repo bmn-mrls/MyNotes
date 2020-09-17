@@ -8,6 +8,25 @@
         android:layout_height="match_parent"
         tools:context=".settings.views.fragments.SettingsFragment">
 
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/ToolbarStyle"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/toolbarTitleTextView"
+                style="@style/BoldTextStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/settings"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/long_text_size" />
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

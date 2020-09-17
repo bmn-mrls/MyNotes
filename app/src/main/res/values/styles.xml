@@ -15,6 +15,16 @@
         <item name="android:background">@color/colorPrimary</item>
     </style>
 
+    <style name="CreateEditNoteToolbarStyle" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:textColorPrimary">@color/colorPrimaryText</item>
+        <item name="android:textColorSecondary">@color/colorPrimaryText</item>
+        <item name="android:fontFamily">@font/avenir_next_bold</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textSize">@dimen/normal_text_size</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
     <style name="ActiveBottomNavigationViewTextStyle">
         <item name="android:fontFamily">@font/avenir_next_bold</item>
     </style>
