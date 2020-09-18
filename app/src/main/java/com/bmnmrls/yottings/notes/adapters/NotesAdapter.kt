@@ -1,7 +1,5 @@
 package com.bmnmrls.yottings.notes.adapters
 
-import android.graphics.Color
-import android.graphics.drawable.GradientDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bmnmrls.domain.models.Note
 import com.bmnmrls.yottings.R
 import com.bmnmrls.yottings.databinding.NoteItemLayoutBinding
-import com.bmnmrls.yottings.utils.ktx.setTextFromStringOrResource
 import javax.inject.Inject
 
 class NotesAdapter @Inject constructor() : RecyclerView.Adapter<NotesAdapter.ViewHolder>() {
@@ -37,31 +34,11 @@ class NotesAdapter @Inject constructor() : RecyclerView.Adapter<NotesAdapter.Vie
         private val binding: NoteItemLayoutBinding = NoteItemLayoutBinding.bind(view)
 
         fun bind(item: Note, listener: ((Note) -> Unit)) = with(binding) {
-            backgroundImageView.setImageDrawable(
-                getNoteBackground(
-                    item.firstColor,
-                    item.secondColor
-                )
-            )
-            contentTextView.setTextFromStringOrResource(item.content)
-            dateTextView.setTextFromStringOrResource(item.date)
-            favoriteImageView.visibility = if (item.isFavorite) View.VISIBLE else View.GONE
-            root.setOnClickListener { listener(item) }
+            note = item
+            this.listener = View.OnClickListener { listener(item) }
+            executePendingBindings()
         }
 
-    }
-
-    companion object {
-        fun getNoteBackground(firstColor: String, secondColor: String): GradientDrawable =
-            GradientDrawable(
-                GradientDrawable.Orientation.BOTTOM_TOP,
-                intArrayOf(
-                    Color.parseColor(firstColor),
-                    Color.parseColor(secondColor)
-                )
-            ).apply {
-                cornerRadius = 0f
-            }
     }
 
 }
