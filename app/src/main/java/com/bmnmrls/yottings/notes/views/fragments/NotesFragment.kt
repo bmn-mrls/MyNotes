@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -43,7 +42,12 @@ class NotesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentNotesBinding.inflate(layoutInflater)
+        binding = FragmentNotesBinding.inflate(layoutInflater).also {
+            it.lifecycleOwner = viewLifecycleOwner
+            it.setAddNoteListener { onAddNoteClicked() }
+            it.errorLayout.setRetryListener { onRetryLoadNotesClicked() }
+            it.executePendingBindings()
+        }
         return binding.root
     }
 
@@ -60,8 +64,6 @@ class NotesFragment : Fragment() {
 
     private fun setupUI() {
         setupNotes()
-        setupAddNewNote()
-        setupRetryEvent()
     }
 
     private fun setupNotes() {
@@ -78,14 +80,14 @@ class NotesFragment : Fragment() {
         }
     }
 
-    private fun setupAddNewNote() {
-        binding.addNoteButton.setOnClickListener {
-            val action = NotesFragmentDirections.actionNotesFragmentToCreateEditNoteFragment(
-                CreateEditNoteFragment.Mode.CREATE
-            )
-            findNavController().navigate(action)
-        }
+    private fun onAddNoteClicked() {
+        val action = NotesFragmentDirections.actionNotesFragmentToCreateEditNoteFragment(
+            CreateEditNoteFragment.Mode.CREATE
+        )
+        findNavController().navigate(action)
     }
+
+    private fun onRetryLoadNotesClicked() = viewModel.setStateEvent(NotesStateEvent.GetNotes)
 
     private fun loadNotes(notes: List<Note>) = notesAdapter.addNotes(notes)
 
@@ -103,28 +105,24 @@ class NotesFragment : Fragment() {
         }
     }
 
-    private fun setupRetryEvent() =
-        binding.errorLayout.findViewById<Button>(R.id.retryButton)
-            .setOnClickListener { viewModel.setStateEvent(NotesStateEvent.GetNotes) }
-
     private fun showNotes() {
         binding.notesRecyclerView.showView()
         binding.addNoteButton.showView()
         binding.emptyLayout.hideView()
-        binding.errorLayout.hideView()
+        binding.errorLayout.root.hideView()
         binding.loadingLayout.hideView()
     }
 
     private fun showProgress() {
         binding.loadingLayout.showView()
-        binding.errorLayout.hideView()
+        binding.errorLayout.root.hideView()
         binding.emptyLayout.hideView()
         binding.addNoteButton.hideView()
         binding.notesRecyclerView.hideView()
     }
 
     private fun showError() {
-        binding.errorLayout.showView()
+        binding.errorLayout.root.showView()
         binding.loadingLayout.hideView()
         binding.emptyLayout.hideView()
         binding.addNoteButton.hideView()
@@ -134,7 +132,7 @@ class NotesFragment : Fragment() {
     private fun showEmpty() {
         binding.emptyLayout.showView()
         binding.addNoteButton.showView()
-        binding.errorLayout.hideView()
+        binding.errorLayout.root.hideView()
         binding.loadingLayout.hideView()
         binding.notesRecyclerView.hideView()
     }

@@ -45,7 +45,8 @@ class CreateEditNoteFragment : Fragment() {
     ): View? {
         binding = FragmentCreateEditNoteBinding.inflate(layoutInflater).also {
             it.lifecycleOwner = viewLifecycleOwner
-            it.viewModel = this.viewModel
+            it.viewModel = viewModel
+            it.errorLayout.setRetryListener { }
             it.executePendingBindings()
         }
         return binding.root
@@ -90,17 +91,17 @@ class CreateEditNoteFragment : Fragment() {
     private fun showNote() {
         binding.noteEditText.showView()
         binding.loadingLayout.hideView()
-        binding.errorLayout.hideView()
+        binding.errorLayout.root.hideView()
     }
 
     private fun showProgress() {
         binding.loadingLayout.showView()
-        binding.errorLayout.hideView()
+        binding.errorLayout.root.hideView()
         binding.noteEditText.hideView()
     }
 
     private fun showError() {
-        binding.errorLayout.showView()
+        binding.errorLayout.root.showView()
         binding.loadingLayout.hideView()
         binding.noteEditText.hideView()
     }

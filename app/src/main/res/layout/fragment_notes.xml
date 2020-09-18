@@ -3,6 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="addNoteListener"
+            type="android.view.View.OnClickListener" />
+
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -62,6 +70,7 @@
             android:layout_margin="@dimen/default_margin"
             android:backgroundTint="@color/colorAccent"
             android:contentDescription="@string/notes_frag_new_note"
+            android:onClick="@{(view) -> addNoteListener.onClick(view)}"
             android:text="@string/notes_frag_new_note"
             app:icon="@drawable/ic_add"
             app:layout_constraintBottom_toBottomOf="parent"
