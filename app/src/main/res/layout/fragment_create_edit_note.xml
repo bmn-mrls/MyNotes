@@ -30,7 +30,8 @@
                 android:theme="@style/CreateEditNoteToolbarStyle"
                 app:menu="@menu/create_edit_note_menu"
                 app:navigationIcon="@drawable/ic_back"
-                app:title="@string/note" />
+                app:title="@string/note"
+                app:titleTextAppearance="@style/Toolbar.TitleText" />
 
         </com.google.android.material.appbar.AppBarLayout>
 

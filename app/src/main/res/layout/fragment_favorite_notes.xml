@@ -23,7 +23,7 @@
                 android:layout_gravity="center"
                 android:text="@string/favorites"
                 android:textColor="@color/colorPrimaryText"
-                android:textSize="@dimen/long_text_size" />
+                android:textSize="@dimen/huge_text_size" />
 
         </com.google.android.material.appbar.MaterialToolbar>
 

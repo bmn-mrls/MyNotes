@@ -15,6 +15,10 @@
         <item name="android:background">@color/colorPrimary</item>
     </style>
 
+    <style name="Toolbar.TitleText" parent="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="android:textSize">@dimen/huge_text_size</item>
+    </style>
+
     <style name="CreateEditNoteToolbarStyle" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <item name="android:background">@color/colorPrimary</item>
         <item name="android:textColorPrimary">@color/colorPrimaryText</item>
