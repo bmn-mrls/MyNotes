@@ -52,6 +52,11 @@ class NotesFragment : Fragment() {
         setupUI()
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.setStateEvent(NotesStateEvent.GetNotes)
+    }
+
     private fun setupUI() {
         setupNotes()
         setupAddNewNote()
