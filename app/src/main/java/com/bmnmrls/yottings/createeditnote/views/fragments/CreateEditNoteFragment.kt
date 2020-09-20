@@ -70,6 +70,11 @@ class CreateEditNoteFragment : Fragment() {
                 is DataState.Error -> showError()
             }
         }
+        viewModel.isFavorite.observe(this) {
+            binding.toolbar.menu.findItem(R.id.favorite).setIcon(
+                if (it) R.drawable.ic_favorite_active else R.drawable.ic_favorite_inactive
+            )
+        }
     }
 
     private fun setupUI() {
@@ -77,6 +82,7 @@ class CreateEditNoteFragment : Fragment() {
         binding.toolbar.setOnMenuItemClickListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.favorite -> {
+                    viewModel.isFavorite.value = viewModel.isFavorite.value?.not()
                     true
                 }
                 R.id.done -> {
