@@ -7,8 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bmnmrls.domain.models.Note
 import com.bmnmrls.yottings.R
 import com.bmnmrls.yottings.databinding.NoteItemLayoutBinding
+import dagger.hilt.android.scopes.FragmentScoped
 import javax.inject.Inject
 
+@FragmentScoped
 class NotesAdapter @Inject constructor() : RecyclerView.Adapter<NotesAdapter.ViewHolder>() {
 
     lateinit var listener: ((Note) -> Unit)
