@@ -5,7 +5,6 @@ import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.bmnmrls.domain.DataState
-import com.bmnmrls.domain.Failure
 import com.bmnmrls.domain.models.Note
 import com.bmnmrls.domain.repositories.NotesRepository
 import com.bmnmrls.yottings.createeditnote.models.CreateEditNoteStateEvent
@@ -47,7 +46,7 @@ class CreateEditNoteViewModel @ViewModelInject constructor(
         val noteColors = context.getRandomColorStringPair()
         val contentCopy = content.value
         val isFavoriteCopy = isFavorite.value
-        if (contentCopy != null && isFavoriteCopy != null) {
+        if (contentCopy != null && contentCopy.isNotEmpty() && isFavoriteCopy != null) {
             val note = Note(
                 content = contentCopy,
                 date = Calendar.getInstance().time,
@@ -61,8 +60,7 @@ class CreateEditNoteViewModel @ViewModelInject constructor(
                 }
                 .launchIn(viewModelScope)
         } else {
-            _createNoteDataState.value =
-                DataState.Error(Failure.GenericError(IllegalArgumentException()))
+            _createNoteDataState.value = DataState.Empty
         }
     }
 

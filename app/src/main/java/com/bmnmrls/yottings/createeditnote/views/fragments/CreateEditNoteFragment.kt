@@ -62,7 +62,7 @@ class CreateEditNoteFragment : Fragment() {
     private fun initObservers() {
         viewModel.createNoteDataState.observe(this) { dataState ->
             when (dataState) {
-                is DataState.Success<Long> -> {
+                is DataState.Success<Long>, is DataState.Empty -> {
                     showNote()
                     findNavController().popBackStack()
                 }
