@@ -19,26 +19,39 @@ class CreateEditNoteViewModel @ViewModelInject constructor(
     @Assisted private val savedStateHandle: SavedStateHandle
 ) : AndroidViewModel(app) {
 
+    private var note: Note = Note(
+        content = "",
+        date = Date(),
+        isFavorite = false,
+        firstColor = "",
+        secondColor = ""
+    )
+
     val content: MutableLiveData<String> = MutableLiveData("")
     val isFavorite: MutableLiveData<Boolean> = MutableLiveData(false)
-
     val createNoteDataState: LiveData<DataState<Long>> get() = _createNoteDataState
+    val updateNoteDataState: LiveData<DataState<Any>> get() = _updateNoteDataState
+    val deleteNoteDataState: LiveData<DataState<Any>> get() = _deleteNoteDataState
 
     private val _createNoteDataState = MutableLiveData<DataState<Long>>()
+    private val _updateNoteDataState = MutableLiveData<DataState<Any>>()
+    private val _deleteNoteDataState = MutableLiveData<DataState<Any>>()
 
     fun setStateEvent(createEditNoteStateEvent: CreateEditNoteStateEvent) {
         when (createEditNoteStateEvent) {
             is CreateEditNoteStateEvent.CreateNote -> createNote()
-            is CreateEditNoteStateEvent.UpdateNote -> {
-
-            }
-            is CreateEditNoteStateEvent.DeleteNote -> {
-
-            }
+            is CreateEditNoteStateEvent.UpdateNote -> updateNote()
+            is CreateEditNoteStateEvent.DeleteNote -> deleteNote()
             is CreateEditNoteStateEvent.None -> {
                 //No-op
             }
         }
+    }
+
+    fun setOriginalNote(note: Note) {
+        this.note = note
+        content.value = note.content
+        isFavorite.value = note.isFavorite
     }
 
     private fun createNote() {
@@ -47,13 +60,11 @@ class CreateEditNoteViewModel @ViewModelInject constructor(
         val contentCopy = content.value
         val isFavoriteCopy = isFavorite.value
         if (contentCopy != null && contentCopy.isNotEmpty() && isFavoriteCopy != null) {
-            val note = Note(
-                content = contentCopy,
-                date = Calendar.getInstance().time,
-                isFavorite = isFavoriteCopy,
-                firstColor = noteColors.first,
-                secondColor = noteColors.second
-            )
+            note.content = contentCopy
+            note.date = Calendar.getInstance().time
+            note.isFavorite = isFavoriteCopy
+            note.firstColor = noteColors.first
+            note.secondColor = noteColors.second
             notesRepository.createNote(note)
                 .onEach { dataState ->
                     _createNoteDataState.value = dataState
@@ -62,6 +73,36 @@ class CreateEditNoteViewModel @ViewModelInject constructor(
         } else {
             _createNoteDataState.value = DataState.Empty
         }
+    }
+
+    private fun updateNote() {
+        val contentCopy = content.value
+        val isFavoriteCopy = isFavorite.value
+
+        if (contentCopy == note.content && isFavoriteCopy == note.isFavorite) {
+            _updateNoteDataState.value = DataState.Empty
+        } else {
+            if (contentCopy != null && contentCopy.isNotEmpty() && isFavoriteCopy != null) {
+                note.content = contentCopy
+                note.isFavorite = isFavoriteCopy
+                note.date = Calendar.getInstance().time
+                notesRepository.updateNote(note)
+                    .onEach { dataState ->
+                        _updateNoteDataState.value = dataState
+                    }
+                    .launchIn(viewModelScope)
+            } else {
+                setStateEvent(CreateEditNoteStateEvent.DeleteNote)
+            }
+        }
+    }
+    
+    private fun deleteNote() {
+        notesRepository.deleteNote(note)
+            .onEach { dataState ->
+                _deleteNoteDataState.value = dataState
+            }
+            .launchIn(viewModelScope)
     }
 
 }

@@ -55,6 +55,7 @@ class CreateEditNoteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupMode()
         setupUI()
         setupOnBackPressed()
     }
@@ -70,10 +71,36 @@ class CreateEditNoteFragment : Fragment() {
                 is DataState.Error -> showError()
             }
         }
+        viewModel.updateNoteDataState.observe(this) { dataState ->
+            when (dataState) {
+                is DataState.Success, is DataState.Empty -> {
+                    showNote()
+                    findNavController().popBackStack()
+                }
+                is DataState.Loading -> showProgress()
+                is DataState.Error -> showError()
+            }
+        }
+        viewModel.deleteNoteDataState.observe(this) { dataState ->
+            when (dataState) {
+                is DataState.Success -> {
+                    showNote()
+                    findNavController().popBackStack()
+                }
+                is DataState.Loading -> showProgress()
+                is DataState.Error -> showError()
+            }
+        }
         viewModel.isFavorite.observe(this) {
             binding.toolbar.menu.findItem(R.id.favorite).setIcon(
                 if (it) R.drawable.ic_favorite_active else R.drawable.ic_favorite_inactive
             )
+        }
+    }
+
+    private fun setupMode() {
+        if (args.mode == Mode.EDIT) {
+            args.note?.let { viewModel.setOriginalNote(it) }
         }
     }
 
@@ -115,9 +142,13 @@ class CreateEditNoteFragment : Fragment() {
     private fun setupOnBackPressed() {
         val callback = object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                if (args.mode == Mode.CREATE) {
-                    viewModel.setStateEvent(CreateEditNoteStateEvent.CreateNote)
-                }
+                viewModel.setStateEvent(
+                    if (args.mode == Mode.CREATE) {
+                        CreateEditNoteStateEvent.CreateNote
+                    } else {
+                        CreateEditNoteStateEvent.UpdateNote
+                    }
+                )
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)

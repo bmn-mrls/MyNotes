@@ -67,7 +67,13 @@ class NotesFragment : Fragment() {
     }
 
     private fun setupNotes() {
-        notesAdapter.listener = {}
+        notesAdapter.listener = {
+            val action = NotesFragmentDirections.actionNotesFragmentToCreateEditNoteFragment(
+                CreateEditNoteFragment.Mode.EDIT,
+                it
+            )
+            findNavController().navigate(action)
+        }
         binding.notesRecyclerView.apply {
             setHasFixedSize(true)
             addItemDecoration(

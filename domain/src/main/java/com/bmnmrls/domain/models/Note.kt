@@ -10,6 +10,6 @@ data class Note(
     var content: String,
     var date: Date,
     var isFavorite: Boolean,
-    val firstColor: String,
-    val secondColor: String
+    var firstColor: String,
+    var secondColor: String
 ) : Parcelable
