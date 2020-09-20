@@ -23,7 +23,12 @@ class NotesViewModel @ViewModelInject constructor(
             is NotesStateEvent.GetNotes -> {
                 notesRepository.getNotes()
                     .onEach { dataState ->
-                        _getNotesDataState.value = dataState
+                        if (dataState is DataState.Success) {
+                            val notesSortedByDate = sortNotesByDate(dataState.data)
+                            _getNotesDataState.value = DataState.Success(notesSortedByDate)
+                        } else {
+                            _getNotesDataState.value = dataState
+                        }
                     }
                     .launchIn(viewModelScope)
             }
@@ -32,5 +37,8 @@ class NotesViewModel @ViewModelInject constructor(
             }
         }
     }
+
+    private fun sortNotesByDate(notes: List<Note>): List<Note> =
+        notes.sortedByDescending { it.date }
 
 }
